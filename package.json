@@ -1,0 +1,23 @@
+{
+  "name": "pulpo",
+  "version": "1.0.0",
+  "description": "Pulpo JS - Micro Library",
+  "main": "pulpo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/badillosoft/pulpo.git"
+  },
+  "keywords": [
+    "js",
+    "microlibrary"
+  ],
+  "author": "dragonnomada",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/badillosoft/pulpo/issues"
+  },
+  "homepage": "https://github.com/badillosoft/pulpo#readme"
+}
