@@ -310,7 +310,11 @@ async function post(url, body = {}, options = {}, handler = null) {
     return await response.json();
 }
 
-function fire(name) {
+function handler(name) {
     const handlers = window.handlers || {};
-    return handlers(name) || ((...params) => console.warn(`pulpo.js: invalid handler ${name}`, params))
+    return handlers[name] || ((...params) => console.warn(`pulpo.js: invalid handler ${name}`, params))
+}
+
+function fire(name, ...params) {
+    return handler(name)(...params);
 }
