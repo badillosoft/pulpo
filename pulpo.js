@@ -2,7 +2,7 @@
  * Copyright (c) 2020 Alan Badillo Salas <dragonnomada@gmail.com>
  * MIT Licensed
  * 
- * pulpo.js v1.0.3
+ * pulpo.js v1.0.4
  * 
  */
 
@@ -271,16 +271,16 @@ function handle(name, callback) {
     window.handlers[name] = callback;
 }
 
-function initialize(root = document) {
-    document.body.style.opacity = 0;
-    document.body.style.transition = "opacity 600ms";
+function initialize(root = document.body) {
+    root.style.opacity = 0;
+    root.style.transition = "opacity 600ms";
 
     registry(root);
 
-    document.body.hidden = false;
+    root.hidden = false;
 
     setTimeout(() => {
-        document.body.style.opacity = 1;
+        root.style.opacity = 1;
     });
 }
 
