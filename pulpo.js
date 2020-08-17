@@ -6,7 +6,7 @@
  * 
  */
 
-console.log("Pulpo v1.0.3");
+console.log("Pulpo v1.0.4");
 
 function select(query = "body", root = document) {
     return root.querySelector(query);
