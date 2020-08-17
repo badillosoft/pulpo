@@ -1,6 +1,6 @@
 {
   "name": "pulpo",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Pulpo JS - Micro Library",
   "main": "pulpo.js",
   "scripts": {

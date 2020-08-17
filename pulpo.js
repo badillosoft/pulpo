@@ -2,11 +2,11 @@
  * Copyright (c) 2020 Alan Badillo Salas <dragonnomada@gmail.com>
  * MIT Licensed
  * 
- * pulpo.js v1.0.2
+ * pulpo.js v1.0.3
  * 
  */
 
-console.log("Pulpo v1.0.2");
+console.log("Pulpo v1.0.3");
 
 function select(query = "body", root = document) {
     return root.querySelector(query);
@@ -285,7 +285,12 @@ function initialize(root = document) {
 }
 
 async function get(url, params = {}, handler = undefined) {
-    const query = Object.entries(params || {}).map(([key, value]) => `${key}=${value}`).join("&");
+    const body = {
+        ...(window.globalPost || {}),
+        ...(params || {})
+    };
+
+    const query = Object.entries(body).map(([key, value]) => `${key}=${value}`).join("&");
 
     const response = await fetch(`${url}${query ? `?${query}` : ""}`, handler);
 
@@ -298,10 +303,15 @@ async function get(url, params = {}, handler = undefined) {
 }
 
 async function post(url, body = {}, options = {}, handler = null) {
+    const protocol = {
+        ...(window.globalPost || {}),
+        ...(body || {})
+    };
+
     const response = await fetch(url, handler || {
         method: "post",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify(body || {}),
+        body: JSON.stringify(protocol),
         ...options
     });
 
@@ -320,4 +330,11 @@ function handler(name) {
 
 function fire(name, ...params) {
     return handler(name)(...params);
+}
+
+function setToken(token) {
+    window.globalPost = {
+        ...(window.globalPost || {}),
+        token
+    };
 }
